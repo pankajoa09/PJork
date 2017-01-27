@@ -3,6 +3,7 @@
 
 ### Java ###
 *.class
+target
 
 # BlueJ files
 *.ctxt
@@ -22,4 +23,3 @@
 hs_err_pid*
 
 # End of https://www.gitignore.io/api/java
-f
