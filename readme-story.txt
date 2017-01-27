@@ -25,7 +25,7 @@ In the gym to the left there are rusty weights, straight up ahead are treadmills
 
 Level 4: You are to climb the up the wall and as you do you notice hot lava starts to pour from the top and by chance you make it to the top. On the very top you find a slab of rock. Someone calls you and tells you that you've to sacrifice a dog in order to stop the murderous rage that has stricken the city. If you head right you'll find a bunch of gym equipment and up ahead there's a little puppy. To the left there's a gun. If you find the gun you have the choice to kill yourself with it. If you find a rope you'll have the option to either strangle yourself or the dog.
 
-The ending: You wake up realizing you've murdered your younger sister or you never wake up.
+The ending: You wake up realizing you've murdered your younger sister or you never wake up. Or if you die before then you win because you do wake up.
 
 
 
