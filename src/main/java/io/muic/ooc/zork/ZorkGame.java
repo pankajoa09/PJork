@@ -9,9 +9,12 @@ public class ZorkGame {
     public void start() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
-        System.out.println("Zork: Hello, I am Mr. Bot.");
+
+        Dialogue dialogue = new Dialogue();
+        System.out.println(dialogue.getHouse());
+        System.out.println(dialogue.getLine1());
         while (!quit) {
-            System.out.print("You: ");
+            System.out.print(dialogue.getLine2());
             String name = scanner.nextLine();
             quit = name.equals("quit");
             if (!quit) {
