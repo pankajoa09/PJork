@@ -1,6 +1,8 @@
 package io.muic.ooc.zork;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by gigadot on 12-Jan-17.
@@ -27,14 +29,13 @@ public class Player {
         subUrbs[1][1] = 'P';
     }
 
-    public ArrayList<Integer> getLocation(){
-        ArrayList<Integer> coordinates = new ArrayList<Integer>();
+    public Map<Character, Integer> getLocation(){
+        Map<Character,Integer>  coordinates= new HashMap<Character,Integer>();
         for (int i=0; i < gamemap.getMaxWidth();i++){
             for (int j=0; j < gamemap.getMaxLength();j++){
                 if (subUrbs[i][j] == 'P'){
-
-                    coordinates.add(i);
-                    coordinates.add(j);
+                    coordinates.put('i',i);
+                    coordinates.put('j',j);
 
                 }
             }
@@ -42,14 +43,28 @@ public class Player {
         return coordinates;
     }
 
+    public void displayMap() {
+        for (int i = 0; i < gamemap.getMaxWidth(); i++) {
+            for (int j = 0; j < gamemap.getMaxLength(); j++) {
+                System.out.print(subUrbs[i][j]);
+            }
+            System.out.println();
+        }
+    }
 
     public void shiftLeftOne(){
         try {
-            subUrbs[getLocation().get(0)][getLocation().get(1)] = 'X';
-            subUrbs[getLocation().get(0) + 1][getLocation().get(1)] = 'P';
+            System.out.println("-------------");
+            System.out.println(getLocation().keySet());
+            System.out.println(getLocation().values());
+            System.out.println("-------------");
+
+            subUrbs[getLocation().get('i')][getLocation().get('j')] = '*';
+            subUrbs[getLocation().get('i')+1][getLocation().get('j')] = 'P';
+            displayMap();
         }
         catch (IndexOutOfBoundsException iobe){
-            System.out.println()
+            displayMap();
             iobe.printStackTrace();
         }
 

@@ -43,6 +43,7 @@ public class ZorkGame {
             if (!command.quit) {
 
                 if (command.help) {
+                    player.displayMap();
                     System.out.print(dialogue.getHelpMenu());
                     command.help = false;
                 }
