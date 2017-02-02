@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.System.exit;
+
 /**
  * Created by gigadot on 12-Jan-17.
  */
 public class Player {
+
+
 
     private Dialogue dialogue = new Dialogue();
     private GameMap gamemap = new GameMap();
@@ -26,14 +30,14 @@ public class Player {
 
 
     public void setSuburbStartLocation(){
-        subUrbs[1][1] = 'P';
+        subUrbs[1][1] = gamemap.getPlayerSymbol();
     }
 
     public Map<Character, Integer> getLocation(){
         Map<Character,Integer>  coordinates= new HashMap<Character,Integer>();
         for (int i=0; i < gamemap.getMaxWidth();i++){
             for (int j=0; j < gamemap.getMaxLength();j++){
-                if (subUrbs[i][j] == 'P'){
+                if (subUrbs[i][j] == gamemap.getPlayerSymbol()){
                     coordinates.put('i',i);
                     coordinates.put('j',j);
 
@@ -46,26 +50,46 @@ public class Player {
     public void displayMap() {
         for (int i = 0; i < gamemap.getMaxWidth(); i++) {
             for (int j = 0; j < gamemap.getMaxLength(); j++) {
-                System.out.print(subUrbs[i][j]);
+                System.out.print(subUrbs[i][j]+" ");
             }
             System.out.println();
         }
     }
 
-    public void shiftLeftOne(){
-        try {
-            System.out.println("-------------");
-            System.out.println(getLocation().keySet());
-            System.out.println(getLocation().values());
-            System.out.println("-------------");
 
-            subUrbs[getLocation().get('i')][getLocation().get('j')] = '*';
-            subUrbs[getLocation().get('i')+1][getLocation().get('j')] = 'P';
-            displayMap();
+    public void debugLocation(){
+        System.out.println("-------------");
+        System.out.println(getLocation().keySet());
+        System.out.println(getLocation().values());
+        System.out.println("-------------");
+    }
+
+    public void shiftLeftOne(){
+        int i = getLocation().get('i');
+        int j = getLocation().get('j');
+        try {
+            //debugLocation();
+
+            if (j >= gamemap.getMaxWidth()-1) {
+                System.out.println("You hit a wall");
+                displayMap();
+
+            } else {
+                subUrbs[i][j] = gamemap.getEmptyAreaSymbol();
+
+                subUrbs[i][j + 1] = gamemap.getPlayerSymbol();
+                displayMap();
+
+            }
         }
         catch (IndexOutOfBoundsException iobe){
-            displayMap();
-            iobe.printStackTrace();
+
+            System.out.println("Somehow you are out of bounds. Quiting the game.");
+            subUrbs[i][j] = gamemap.getEmptyAreaSymbol();
+            iobe.printStackTrace(
+
+            );;
+            exit(0);
         }
 
 

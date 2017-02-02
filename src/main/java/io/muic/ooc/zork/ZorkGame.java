@@ -24,6 +24,8 @@ public class ZorkGame {
             System.out.println(introList.get(ind));
             scanner.nextLine();
         }
+        player.setSuburbStartLocation();
+        player.displayMap();
         while (!command.quit) {
             System.out.print("> ");
             String input = scanner.nextLine();
@@ -39,7 +41,7 @@ public class ZorkGame {
             command.quit = parser(input, "quit", "q");
             command.help = parser(input, "help", "h");
 
-            player.setSuburbStartLocation();
+
             if (!command.quit) {
 
                 if (command.help) {
@@ -53,9 +55,10 @@ public class ZorkGame {
                 }
 
                 if (command.left){
-                    System.out.println(player.getLocation().get(0)+ " " + player.getLocation().get(1));
+                    System.out.println("command left "+command.left);
                     player.shiftLeftOne();
-                    System.out.println(player.getLocation().get(0)+ " " + player.getLocation().get(1));
+                    command.left = false;
+
                 }
 
 
